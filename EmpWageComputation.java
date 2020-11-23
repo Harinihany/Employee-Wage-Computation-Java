@@ -14,24 +14,28 @@ public class EmpWageComputation  {
 
 		Random random=new Random();
 		
-		int empRatePerHour=20;
+		
 		int isFullTime=1;
 		int isPartTime=2;
 		int numOfWorkingDays=20;
 		int empHrs=0;
                 int salary=0;
 		int totalSalary=0;
-
+		int maxHrs=1000;
 		int randomNum=random.nextInt(3);
-
+		int totalWorkingDays=0
+		
 		System.out.println("Welcome to Employee Wage Computation Program");
 		
 
 		System.out.println("Random number: "+randomNum);
-		for (int day=1; day<=20; day++)	{	
-		switch (randomNum)
-		{
+		while( empHrs < maxHrs && totalWorkingDays < numOfWorkingDays ) { 
+		(totalWorkingDays++)
+		
+		System.out.println("total working days is"+totalWorkingDays);
 
+		switch(randomNum)
+		{
 		case 1: 
 		
 			System.out.println("Employee is Full-Time");
@@ -44,11 +48,11 @@ public class EmpWageComputation  {
 			empHrs=0;
 		}
 
-		perDaySalary=empRatePerHour*empHrs;
-                System.out.println("Salary for the day is "+perDaySalary);
-		totalSalary1=totalSalary+perDaySalary
+		totalEmpHrs=maxHrs*empHrs;
+                System.out.println("total employee hours is "+totalEmpHrs);
+		
 		}
-
+		totalSalary1=totalWorkHours*empHrs
 		 System.out.println("Salary for the month is "+totalSalary1);
 
 		
