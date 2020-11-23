@@ -13,11 +13,13 @@ public class EmpWageComputation  {
 		
 
 		Random random=new Random();
-		//int salary=0;
-		int empRatePerHour=20;
 		
+		int empRatePerHour=20;
+		int isFullTime=1;
+		int isPartTime=2;
 
-		int randomNum=random.nextInt(2);
+
+		int randomNum=random.nextInt(3);
 
 		System.out.println("Welcome to Employee Wage Computation Program");
 		
@@ -26,17 +28,30 @@ public class EmpWageComputation  {
 
 		
 
-		 int workHour=8;
-                 int salary=(empRatePerHour * workHour);
+		 //int workHour=8;
+                 //int salary=(empRatePerHour * workHour);
 
-		if(randomNum==1)
+		if(randomNum==isFullTime)
 
 		{
 
-			System.out.println("Employee is Present");
-			
+			System.out.println("Employee is Full-Time");
+			int workHour=8;
+			int salary=(empRatePerHour * workHour);
+
 			System.out.println("salary is:"+salary);
 		}
+		else if(randomNum==isPartTime)
+		//int workHour=4;
+
+                {
+
+                        System.out.println("Employee is Part-Time");
+			int workHour=4;
+			int salary=(empRatePerHour * workHour);
+
+                        System.out.println("salary is:"+salary);
+                }
 
 		else
 
