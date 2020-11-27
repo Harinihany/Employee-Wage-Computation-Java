@@ -12,7 +12,8 @@ public class EmpWageComputation  {
         public static final int MAX_HRS_IN_MONTH=10;
 
 
-	public static int computeEmpWage()
+	public static int computeEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth)
+	
 	{
 	int empHrs=0,totalEmpHrs=0,totalWorkingDays=0;
 	while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
@@ -34,11 +35,11 @@ public class EmpWageComputation  {
 		System.out.println("Day:"+totalWorkingDays +  "EmpHrs: "+empHrs);
 		}
 		int totalEmpWage=totalEmpHrs*EMP_RATE_PER_HOUR;
-		System.out.println("total emp wage: "+totalEmpWage);
+		System.out.println("total emp wage for company: "+company+ "is: "+totalEmpWage);
 		return totalEmpWage;
 		}
 	public static void main(String[] args){
-	computeEmpWage();
-	
+	computeEmpWage("DMART", 20,2,10);
+	computeEmpWage("RELIANCE", 10,4,20);
 	}
 }
