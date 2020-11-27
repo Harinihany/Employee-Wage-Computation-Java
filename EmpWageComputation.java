@@ -5,55 +5,40 @@ import java.util.Random;
 
 public class EmpWageComputation  {
 
+	public static final int IS_PART_TIME=1;
+	public static final int IS_FULL_TIME=2;
+	public static final int EMP_RATE_PER_HOUR=20;
+        public static final int NUM_OF_WORKING_DAYS=2;
+        public static final int MAX_HRS_IN_MONTH=10;
 
 
-
-	public static void main(String[] args) {
-
-		
-
-		Random random=new Random();
-		
-		
-		int isFullTime=1;
-		int isPartTime=2;
-		int numOfWorkingDays=20;
-		int empHrs=0;
-                int salary=0;
-		int totalSalary=0;
-		int maxHrs=1000;
-		int randomNum=random.nextInt(3);
-		int totalWorkingDays=0
-		
-		System.out.println("Welcome to Employee Wage Computation Program");
-		
-
-		System.out.println("Random number: "+randomNum);
-		while( empHrs < maxHrs && totalWorkingDays < numOfWorkingDays ) { 
-		(totalWorkingDays++)
-		
-		System.out.println("total working days is"+totalWorkingDays);
-
-		switch(randomNum)
+	public static int computeEmpWage()
+	{
+	int empHrs=0,totalEmpHrs=0,totalWorkingDays=0;
+	while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
+	{
+		totalWorkingDays++;
+		int empCheck=(int) Math.floor(Math.random() * 10)%3;
+		switch(empCheck)
 		{
-		case 1: 
-		
-			System.out.println("Employee is Full-Time");
-			empHrs=8;
-			break;
-		case 2: System.out.println("Employee is Part-Time");
+		case IS_PART_TIME:
 			empHrs=4;
 			break;
-                default: System.out.println("Employee is Absent");
+		case IS_FULL_TIME:
+			empHrs=8;
+			break;
+		default:
 			empHrs=0;
 		}
-
-		totalEmpHrs=maxHrs*empHrs;
-                System.out.println("total employee hours is "+totalEmpHrs);
-		
+		totalEmpHrs+=empHrs;
+		System.out.println("Day:"+totalWorkingDays +  "EmpHrs: "+empHrs);
 		}
-		totalSalary1=totalWorkHours*empHrs
-		 System.out.println("Salary for the month is "+totalSalary1);
-
-		
+		int totalEmpWage=totalEmpHrs*EMP_RATE_PER_HOUR;
+		System.out.println("total emp wage: "+totalEmpWage);
+		return totalEmpWage;
+		}
+	public static void main(String[] args){
+	computeEmpWage();
+	
+	}
 }
