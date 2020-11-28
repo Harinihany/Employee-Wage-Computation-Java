@@ -53,8 +53,9 @@ public class EmpWageBuilderObject {
 
 
 	@Override
-	public String toString() {
-		return "Total Emp Wage for Company: "+company+" is "+totalEmpWage;
+	public int getTotalWage(String company) {
+
+		return 	companyEmpWageMap.get(company).totalWage;
 	}
 	public static void main(String[] args) {
 		EmpWageBuilderObject dMart=new EmpWageBuilderObject("DMart", 20, 2, 10);
