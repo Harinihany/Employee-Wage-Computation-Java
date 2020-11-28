@@ -79,6 +79,8 @@ public class EmployeeWageBuilderArray implements IComputeEmpWage {
 		empWageBuilder.addCompanyEmpWage("Dmart", 20, 2, 10);
 		empWageBuilder.addCompanyEmpWage("Reliance", 10, 4, 20);
 		empWageBuilder.computeEmpWage();
+		System.out.println("\n Total wage of  Company D-Mart is: "+empWageBuilderClass.getTotalWage("D-mart"));
+
 	}
 
 	@Override
