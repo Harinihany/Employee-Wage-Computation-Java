@@ -1,36 +1,50 @@
+
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 import java.util.Random;
 
-public class EmployeeWageBuilderArray {
+public class EmployeeWageBuilderArray implements IComputeEmpWage {
 
 	public static final int IS_PART_TIME=1;
 	public static final int IS_FULL_TIME=2;
 	
 	public int numOfCompany=0;
+	private LinkedList<CompanyEmpWage> companyEmpWageList;
 	
-	CompanyEmpWage companyEmpWage[];
+	private Map<String, CompanyEmpWage>companyEmpWageMap;
 	
 	public EmployeeWageBuilderArray()
 	{
-		companyEmpWage=new CompanyEmpWage[5];
+
+		companyEmpWageList= new LinkedList<CompanyEmpWage>();
+		companyEmpWageMap=new HashMap<String, CompanyEmpWage>();
+		
 	}
 	
-	private void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth)
+	public void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth)
 	{
-		companyEmpWage[numOfCompany]=new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
-		numOfCompany++;
+
+		CompanyEmpWage companyEmpWage=new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);	
+		
+		companyEmpWageList.add(companyEmpWage);
+		companyEmpWageMap.put(company, companyEmpWage);
+		
 	}
 	
-	private void computeEmpWage()
+	public void computeEmpWage()
 	{
-		for (int i = 0; i <numOfCompany; i++) 
+		for (int i = 0; i <companyEmpWageList.size(); i++)  
 		{
-			companyEmpWage[i].setTotalEmpWage(this.computeEmpWage(companyEmpWage[i]));
-			System.out.println(companyEmpWage[i]);
+			CompanyEmpWage company=companyEmpWageList.get(i);
+			company.setTotalEmpWage(this.computeEmpWage(company));
+			System.out.println(company);
 		}
 	}
 	
 	
-	private int computeEmpWage(CompanyEmpWage companyEmpWage)
+	public int computeEmpWage(CompanyEmpWage companyEmpWage)
 	{
 	int empHrs=0,totalEmpHrs=0,totalWorkingDays=0;
 	Random random=new Random();
@@ -39,7 +53,7 @@ public class EmployeeWageBuilderArray {
 		totalWorkingDays++;
 		
 		int empCheck=random.nextInt(3);
-				//(int) Math.floor(Math.random() * 10)%3;
+				
 		switch(empCheck)
 		{
 		case IS_PART_TIME:
@@ -65,5 +79,11 @@ public class EmployeeWageBuilderArray {
 		empWageBuilder.addCompanyEmpWage("Dmart", 20, 2, 10);
 		empWageBuilder.addCompanyEmpWage("Reliance", 10, 4, 20);
 		empWageBuilder.computeEmpWage();
+	}
+
+	@Override
+	public int getTotalWage(String company) {
+		return companyEmpWageMap.get(company).totalEmpWage;
+		 
 	}
 }
